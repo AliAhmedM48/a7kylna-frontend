@@ -1,12 +1,11 @@
 //#region IMPORTS
-import { Dispatch, SetStateAction, SyntheticEvent, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, SyntheticEvent, useState } from "react";
 import { Gender, RegisterForm } from "../interfaces/user";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/Auth";
 import axiosClient from "../_utils/axiosClient";
 import { endpointsAuth } from "../_utils/ApiEndpoints";
 import { routes } from "../_utils/Routes";
-import axios from "axios";
 //#endregion
 
 // * REACT COMPONENT
