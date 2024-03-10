@@ -61,7 +61,8 @@ const PostComponent: React.FC<PostComponentProps> = ({ post, onDelete, user }) =
 
     return (
         <>
-            <div className="card mx-auto md:max-w-2xl max-w-sm bg-[#2a323c] pb-5 shadow-xl">
+            {/* <div className="card mx-auto md:max-w-2xl max-w-sm bg-[#2a323c] pb-5 shadow-xl"> */}
+            <div className="card mx-auto md:max-w-2xl max-w-sm pb-5 shadow-xl border-2 border-neutral-content">
                 <div className="card-body pb-5">
                     <div className="HEADER flex justify-between mb-5">
 
@@ -70,7 +71,7 @@ const PostComponent: React.FC<PostComponentProps> = ({ post, onDelete, user }) =
                                 <img className="object-cover w-full h-full block" src={post.owner.avatar} alt="Owner Avatar" />
                             </figure>
                             <div>
-                                <h1>{post.owner.fullName}</h1>
+                                <h1 className=''>{post.owner.fullName}</h1>
                                 <p className='text-base'>{timeAgo}</p>
                             </div>
                         </div>

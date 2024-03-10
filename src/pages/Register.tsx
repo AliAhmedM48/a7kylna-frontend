@@ -1,16 +1,23 @@
 //#region IMPORTS
-import { Dispatch, SetStateAction, SyntheticEvent, useState } from "react";
+import { Dispatch, SetStateAction, SyntheticEvent, useEffect, useState } from "react";
 import { Gender, RegisterForm } from "../interfaces/user";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/Auth";
 import axiosClient from "../_utils/axiosClient";
 import { endpointsAuth } from "../_utils/ApiEndpoints";
 import { routes } from "../_utils/Routes";
+import axios from "axios";
 //#endregion
 
 // * REACT COMPONENT
 export default function Register() {
+
+
+
+
+
   // & VARIABLES
+  const [loading, setLoading] = useState(false);
   const formDataInitial: RegisterForm = {
     email: "",
     fullName: "",
@@ -28,6 +35,8 @@ export default function Register() {
   const handleSubmit = async (event: SyntheticEvent) => {
     //#region 
     event.preventDefault();
+    setLoading(true);
+
 
     if (!formData.fullName || !formData.email || !formData.password) {
       setAlertMessage('Please fill in all fields');
@@ -35,6 +44,7 @@ export default function Register() {
     }
 
     try {
+
       const response = await _axiosClient.post(endpointsAuth.register, formData);
       console.log("🚀 ~ handleSubmit ~ response:", response);
 
@@ -50,6 +60,8 @@ export default function Register() {
       // Handle network or server error
       setAlertMessage('Registration failed. Please try again later.');
       console.error('Error submitting form:', error.response?.data?.message);
+    } finally {
+      setLoading(false);
     }
     //#endregion
   };
@@ -70,10 +82,16 @@ export default function Register() {
     //#endregion
   };
 
+  // & LOADING SCREEN
+  if (loading) return <h1 className="text-center">Loading...</h1>
+
   // * REACT JSX
   return (
     //#region 
     <div className="container max-w-sm md:max-w-md  lg:max-w-3xl  mx-auto">
+
+
+
       <h1 className="text-4xl text-center mb-5">Register</h1>
       <p className="text-center pb-5">Already have an account <Link to={routes.Login} className="underline">Log in</Link></p>
 
@@ -101,6 +119,26 @@ export default function Register() {
             onChange={handleChange}
             type="password" className="grow" placeholder="Password" />
         </label>
+
+
+        <div>
+          <label htmlFor="image" className="sr-only">Image Url</label>
+          <input
+            value={formData.avatar}
+            onChange={handleChange}
+            name='avatar'
+            type="url"
+            className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+            placeholder="Image Url"
+          />
+          {formData.avatar && (
+            <figure className='mt-5 overflow-hidden rounded-full w-32 h-32'>
+              <img className='object-cover w-full h-full rounded-lg text-center' src={formData.avatar} alt="IMAGE-NOT-FOUND" />
+            </figure>
+          )}
+        </div>
+
+
         <div className="flex items-center gap-5 ml-2">
           <label>
             Male

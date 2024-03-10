@@ -58,7 +58,7 @@ export default function Home() {
   // * REACT JSX
   return (
     <>
-      <div className="space-y-5 pb-5">
+      <div className="space-y-5 py-5 px-5 md:px-0">
         {posts && posts.length ? posts?.slice().reverse().map(post => (
           <PostComponent user={auth.user} key={post._id} post={post} onDelete={handleDeletePost} />
         )) :
@@ -72,7 +72,7 @@ export default function Home() {
           to={routes.Add}
           className="group fixed right-10 bottom-24 inline-block focus:outline-none focus:ring" >
           <span
-            className="absolute inset-0 translate-x-1.5 rounded-full translate-y-1.5 bg-gray-800 transition-transform group-hover:translate-x-0 group-hover:translate-y-0"
+            className="absolute inset-0 translate-x-1.5 rounded-full translate-y-1.5  transition-transform group-hover:translate-x-0 group-hover:translate-y-0"
           ></span>
 
           <span

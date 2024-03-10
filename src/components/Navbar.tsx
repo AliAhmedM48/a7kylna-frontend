@@ -11,7 +11,7 @@ function Navbar() {
     return (
       <>
         <div className="flex gap-5 items-center">
-          <span className="text-2xl">{auth.user?.fullName}</span>
+          <span className="text-xs md:text-2xl">{auth.user?.fullName}</span>
           <figure className=" w-16 h-16 overflow-hidden rounded-full">
             <img tabIndex={0} role="button" className="w-full h-full object-cover" src={auth.user?.avatar} alt="" />
           </figure>
@@ -22,10 +22,11 @@ function Navbar() {
   }
   return (
     <>
-      <div className="navbar bg-base-100">
+      {/* <div className="navbar bg-base-100 "> */}
+      <div className="navbar  bg-neutral text-neutral-content flex justify-between">
 
         {/* start */}
-        <div className="navbar-start">
+        <div className="navbar-start w-fit">
           <Link to={routes.Home} className="btn btn-ghost text-xl hover:bg-transparent">A7kylna 👀</Link>
         </div>
 
@@ -53,18 +54,19 @@ function Navbar() {
               }
 
             </div>
-            <ul tabIndex={0} className="menu menu-sm dropdown-content right-0  mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+            {/* <ul tabIndex={0} className="menu menu-sm dropdown-content right-0  mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 "> */}
+            <ul tabIndex={0} className="menu menu-sm dropdown-content right-0  mt-3 z-[1] p-2 shadow  rounded-box w-52 bg-neutral text-neutral-content">
 
-              {/* {!auth.user && */}
-              <>
-                <li>
-                  <NavLink to={routes.Register}>Register</NavLink>
-                </li>
-                <li>
-                  <NavLink to={routes.Login}>Login</NavLink>
-                </li>
-              </>
-              {/* } */}
+              {!auth.user &&
+                <>
+                  <li>
+                    <NavLink to={routes.Register}>Register</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to={routes.Login}>Login</NavLink>
+                  </li>
+                </>
+              }
               {auth.user &&
                 <li>
                   <button onClick={() => { auth.logout() }} >Logout</button>
@@ -87,7 +89,8 @@ function Navbar() {
                   : <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                 }
               </div>
-              <ul tabIndex={0} className="menu menu-sm dropdown-content right-0  mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+              {/* <ul tabIndex={0} className="menu menu-sm dropdown-content right-0  mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"> */}
+              <ul tabIndex={0} className="menu menu-sm dropdown-content right-0  mt-3 z-[1] p-2 shadow bg-neutral text-neutral-content rounded-box w-52">
 
                 {!auth.user &&
                   <>
