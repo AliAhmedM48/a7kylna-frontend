@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* 
+@layer components {
+    .btn {
+        @apply rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow
+    }
+
+    .nav-link {
+        @apply text-gray-500 transition hover:text-gray-500/75
+    }
+}
+
+@layer utilities {
+    .active {
+        @apply text-teal-600 font-bold
+    }
+} */
