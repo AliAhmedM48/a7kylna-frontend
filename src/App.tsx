@@ -12,10 +12,9 @@ import RootLayout from "./layouts/RootLayout";
 import Home from "./pages/Home";
 import PostForm from "./pages/PostForm";
 import GuestLayout from "./layouts/guestLayout";
-import { ContextProvider, useAuth } from "./context/Auth";
+import { ContextProvider } from "./context/Auth";
 import RequireAuth from "./components/RequireAuth";
 import { routes } from "./_utils/Routes";
-import { useEffect } from "react";
 //#endregion
 
 function App() {

@@ -83,21 +83,21 @@ export default function PostForm() {
         //#endregion
     };
 
-    // & Check if URL is valid and not empty
-    const isValidImageUrl = (url: string) => {
-        //#region 
-        if (!url) return false; // Empty URL is not valid
-        const supportedExtensions = ['.jpg', '.jpeg', '.png', '.gif']; // Add more if needed
+    // // & Check if URL is valid and not empty
+    // const isValidImageUrl = (url: string) => {
+    //     //#region 
+    //     if (!url) return false; // Empty URL is not valid
+    //     const supportedExtensions = ['.jpg', '.jpeg', '.png', '.gif']; // Add more if needed
 
-        // Check if URL starts with http:// or https://
-        if (!(url.startsWith('http://') || url.startsWith('https://'))) {
-            return false;
-        }
+    //     // Check if URL starts with http:// or https://
+    //     if (!(url.startsWith('http://') || url.startsWith('https://'))) {
+    //         return false;
+    //     }
 
-        // Check if URL ends with a supported image file extension
-        return supportedExtensions.some(extension => url.toLowerCase().endsWith(extension));
-        //#endregion
-    };
+    //     // Check if URL ends with a supported image file extension
+    //     return supportedExtensions.some(extension => url.toLowerCase().endsWith(extension));
+    //     //#endregion
+    // };
 
 
     // * REACT JSX

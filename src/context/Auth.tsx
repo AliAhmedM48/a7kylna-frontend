@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { LoginForm, User } from '../interfaces/user';
+import { User } from '../interfaces/user';
 import { jwtDecode } from 'jwt-decode';
 
 type AuthContextType = {

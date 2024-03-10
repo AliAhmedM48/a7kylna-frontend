@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Post } from '../interfaces/post';
 import { useNavigate } from 'react-router-dom';
 import { LoginForm } from '../interfaces/user';
-import { routes } from '../_utils/Routes';
 import { formatDistanceToNow } from 'date-fns';
 
 interface PostComponentProps {
@@ -21,21 +20,21 @@ const PostComponent: React.FC<PostComponentProps> = ({ post, onDelete, user }) =
         }
     };
 
-    // & Check if URL is valid and not empty
-    const isValidImageUrl = (url: string) => {
-        //#region 
-        if (!url) return false; // Empty URL is not valid
-        const supportedExtensions = ['.jpg', '.jpeg', '.png', '.gif']; // Add more if needed
+    // // & Check if URL is valid and not empty
+    // const isValidImageUrl = (url: string) => {
+    //     //#region 
+    //     if (!url) return false; // Empty URL is not valid
+    //     const supportedExtensions = ['.jpg', '.jpeg', '.png', '.gif']; // Add more if needed
 
-        // Check if URL starts with http:// or https://
-        if (!(url.startsWith('http://') || url.startsWith('https://'))) {
-            return false;
-        }
+    //     // Check if URL starts with http:// or https://
+    //     if (!(url.startsWith('http://') || url.startsWith('https://'))) {
+    //         return false;
+    //     }
 
-        // Check if URL ends with a supported image file extension
-        return supportedExtensions.some(extension => url.toLowerCase().endsWith(extension));
-        //#endregion
-    };
+    //     // Check if URL ends with a supported image file extension
+    //     return supportedExtensions.some(extension => url.toLowerCase().endsWith(extension));
+    //     //#endregion
+    // };
 
     const [timeAgo, setTimeAgo] = useState('');
 
