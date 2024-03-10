@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = "http://localhost:3000";
+const baseUrl = "https://a7kylna-backend.onrender.com";
 
 const axiosClient = (token: string | null) => {
     const instance = axios.create({
