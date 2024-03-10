@@ -12,6 +12,7 @@ import { Gender } from '../interfaces/user';
 export default function PostForm() {
 
     // & VARIABLES
+    const [loading, setLoading] = useState(false);
     const pathname = useLocation().pathname;
     const postToUpdateID = pathname.split('/')[2];
     const navigate = useNavigate();
@@ -35,6 +36,8 @@ export default function PostForm() {
     const fetchingData = async () => {
         //#region 
         if (!postToUpdateID) return;
+        setLoading(true);
+
         try {
             const response = await (await _axiosClient.get(endpointsPosts.getOneById + postToUpdateID));
             setFormData(response.data);
@@ -43,6 +46,8 @@ export default function PostForm() {
             console.error(`Error fetching post with ID ${postToUpdateID}:`, error);
             throw error;
         }
+        finally { setLoading(false); }
+
         //#endregion
     };
 
@@ -52,6 +57,7 @@ export default function PostForm() {
     // ^ HANDLE SUBMIT
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         console.log(auth.token);
+        setLoading(true);
 
         //#region 
         e.preventDefault();
@@ -68,6 +74,8 @@ export default function PostForm() {
             console.log("🚀 ~ handleSubmit ~ response:", response)
             navigate('/');
         } catch (error) { console.error('Error creating/updating post:', error); }
+        finally { setLoading(false); }
+
         //#endregion
     };
 
@@ -99,6 +107,8 @@ export default function PostForm() {
     //     //#endregion
     // };
 
+    // & LOADING SCREEN
+    if (loading) return <h1 className="text-center">Loading...</h1>
 
     // * REACT JSX
     return (

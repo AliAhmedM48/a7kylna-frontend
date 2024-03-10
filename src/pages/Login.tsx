@@ -12,6 +12,8 @@ import { routes } from "../_utils/Routes";
 export default function Login() {
 
   // & VARIABLES
+  const [loading, setLoading] = useState(false);
+
   const formDataInitial: LoginForm = {
     email: null,
     password: null,
@@ -34,6 +36,9 @@ export default function Login() {
       setAlertMessage("Please provide both email and password.");
       return;
     }
+
+    setLoading(true);
+
 
     try {
       const response = await _axiosClient.post(endpointsAuth.login, formData);
@@ -66,8 +71,10 @@ export default function Login() {
         console.error("Error setting up registration request:", error.message);
         throw new Error("Error setting up registration request.");
       }
+
       //#endregion
     }
+    finally { setLoading(false); }
   };
 
   // & HANDLE CHANGE
@@ -77,6 +84,9 @@ export default function Login() {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
     //#endregion
   };
+
+  // & LOADING SCREEN
+  if (loading) return <h1 className="text-center">Loading...</h1>
 
   // * REACT JSX
   return (
